@@ -17,7 +17,9 @@ How you find the orientation field will depend upon your file type:
 
 1. For single images, you can run OrientationJ directly out of the Fiji Plugins menu. It can be found in Plugins -> OrientationJ -> OrientationJ Analysis. To ensure that the output is saved in a format that later processing stages can understand, you can also run the macro applyOrientationJSingleFrame.ijm. This will produce a grayscale 32-bit image, which should be saved in a separate directory. For our fingerprint, this looks like:
 
-   Save this 32-bit image in a subfolder of the directory containing your original image called 'Orientations'.
+   If you want to make locations where the orientation goes from -pi/2 to pi/2 smooth, you can use a circular colourmap such as Fiji's 'Spectrum' LUT:
+
+   Save the grayscale 32-bit image in a subfolder of the directory containing your original image called 'Orientations'.
 
 2. For timeseries, you will first need to save your image sequence as a series of frames within a single directory. You can achieve this within Fiji by using File -> Save As -> Image Sequence... , then choosing settings as shown below:
 
@@ -31,6 +33,8 @@ In both cases, you will need to choose the tensorSize variable. This sets the wi
 2. If you wish to export plots of the defects on top of your original image, ensure that the variable 'plotting' is set to true. You will also need to have the [export_fig](https://uk.mathworks.com/matlabcentral/fileexchange/23629-export_fig) package for Matlab downloaded and on your path. With this active, you will export plots like this:
 
    These will be saved in a subdirectory in your root directory called DefectOverlays.
+   
+   If you don't like how these overlays look, you can access the plotting parameters within the analyseDefects.m function. 
    
 3. Once the script has finished running, your defect properties will be saved in your root directory in a file called 'Defects.mat'. This file contains four variables: 'positiveDefectStore' and 'negativeDefectStore' contain the x,y coordinates of the +1/2 and -1/2 defect cores, respectively, and 'posDefectOrientationStore' and 'negDefectOrientationStore' contain the orientations of the +1/2 and -1/2 defect cores.
 
