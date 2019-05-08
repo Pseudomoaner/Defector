@@ -65,6 +65,7 @@ In both cases, you will need to choose the tensorSize variable. This sets the wi
 ## References
 - Püspöki Z., Storath M., Sage D., Unser M. (2016). Transforms and Operators for Directional Bioimage Analysis: A Survey. In: De Vos W., Munck S., Timmermans JP. (eds) Focus on Bio-Image Informatics. Advances in Anatomy, Embryology and Cell Biology, vol 219. Springer, Cham. https://doi.org/10.1007/978-3-319-28549-8_3
 - Mermin, N. D. (1979). The topological theory of defects in ordered media. Review of Modern Physics 51, 591–648. https://doi.org/10.1103/RevModPhys.51.591
+- Huterer, D. and Vachaspati, T. (2005). Distribution of singularities in the cosmic microwave background polarization. Physical Review D 72(4), https://doi.org/043004.10.1103/PhysRevD.72.043004
 
 ## Contributors
 
