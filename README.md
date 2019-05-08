@@ -22,13 +22,13 @@ How you find the orientation field will depend upon your file type:
 1. For single images, you can run OrientationJ directly out of the Fiji Plugins menu. It can be found in Plugins -> OrientationJ -> OrientationJ Analysis. To ensure that the output is saved in a format that later processing stages can understand, you can also run the macro applyOrientationJSingleFrame.ijm. This will produce a grayscale 32-bit image, which should be saved in a separate directory. For our fingerprint, this looks like:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Pseudomoaner/Defector/master/Images/Orientation.jpg" alt="Orientation"/>
+  <img src="https://raw.githubusercontent.com/Pseudomoaner/Defector/master/Images/Orientation.png" alt="Orientation"/>
 </p>
 
    If you want to make locations where the orientation goes from -pi/2 to pi/2 smooth, you can use a circular colourmap such as Fiji's 'Spectrum' LUT:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Pseudomoaner/Defector/master/Images/OrientationC.jpg" alt="OrientationC"/>
+  <img src="https://raw.githubusercontent.com/Pseudomoaner/Defector/master/Images/OrientationC.png" alt="OrientationC"/>
 </p>
 
    Save the grayscale 32-bit image in a subfolder of the directory containing your original image called 'Orientations'.
@@ -36,7 +36,7 @@ How you find the orientation field will depend upon your file type:
 2. For timeseries, you will first need to save your image sequence as a series of frames within a single directory. You can achieve this within Fiji by using File -> Save As -> Image Sequence... , then choosing settings as shown below:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Pseudomoaner/Defector/master/Images/ImageSequence.PNG" alt="Image Sequence"/>
+  <img src="https://raw.githubusercontent.com/Pseudomoaner/Defector/master/Images/ImageSequence.jpg" alt="Image Sequence"/>
 </p>
 
    Now you can run the script applyOrientationJBatch.ijm. Write the directory in which your image sequence is saved as the Root variable, the total number of timepoints you wish to analyse as the tmax variable.
