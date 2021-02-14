@@ -1,2 +1,0 @@
- tensorSize = 12; //Size of smoothing Gaussian. Set larger to reduce number of defects detected.
- run("OrientationJ Analysis", "log=0.0 tensor=" + tensorSize + " gradient=0 orientation=on  harris-index=on s-distribution=on hue=Orientation sat=Coherency bri=Original-Image "); // cannot put color survey-on, if not will make negative into positive
