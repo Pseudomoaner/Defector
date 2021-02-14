@@ -34,6 +34,6 @@ if plotting
     end
 end
 
-[negDefCents,negDefOris,posDefCents,posDefOris] = Defector(imgList,procSettings,plotting,fullfile(Root,plotSubDir));
+[negDefCents,negDefOris,posDefCents,posDefOris] = DefectorFind(imgList,procSettings,plotting,fullfile(Root,plotSubDir));
 
 save(outFile,'posDefCents','negDefOris','posDefCents','posDefOris','procSettings');
