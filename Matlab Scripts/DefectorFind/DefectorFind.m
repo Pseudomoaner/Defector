@@ -60,4 +60,8 @@ for i = 1:size(imgList,1)
     
     posDefCents{i} = flip(posDefCents{i},2)*procSettings.pixSize;
     negDefCents{i} = flip(negDefCents{i},2)*procSettings.pixSize;
+    
+    progressbar(i/size(imgList,1))
 end
+
+progressbar(1)
