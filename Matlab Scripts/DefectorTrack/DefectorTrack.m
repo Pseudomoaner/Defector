@@ -1,4 +1,34 @@
 function [procDefTracks,trackSettings] = DefectorTrack(pDposition,nDposition,pDorientation,nDorientation,tS)
+%DEFECTORTRACK runs tracking on topological defect data using the FAST
+%tracking framework.
+%
+%   INPUTS:
+%       -pDposition, nDposition: Coordinates (in physical units) of the
+%       positive and negative half defects. tx1 cell arrays of nx2 matrices,
+%       with each of the n rows containing the x and y coordinates of a
+%       given defect.
+%       -pDorientation, nDorientation: Orientations (in degrees) of the
+%       positive and negative half defects. tx1 cell arrays of nx1 vectors,
+%       indexed in the same was as pDposition/nDposition (i.e. identical
+%       indices correspond to a single defect).
+%       -tS: User-defined settings for performing tracking. Structure
+%       the fields incProp (training link inclusion fraction), tgtDensity
+%       (the ambiguous link probability), dt (the timestep size in physical
+%       units), minTrackLength (the minimum length of a track to be
+%       included, in timesteps), pixSize (the physical size of a single
+%       pixel) and imgHeight/imgWidth (the dimensions of the original
+%       image, in physical units).
+%
+%   OUTPUTS:
+%       -procDefTracks: The defect track data structure, following the
+%       usual format of FAST tracks. Additional fields include population
+%       (1 for +1/2 defects, 2 for -1/2 defects, 3 for inconsistent
+%       topological charge) and sparefeat1, which contains the topological
+%       charge data over time for the defect.
+%       -trackSettings: The full trackSettings structure as used by FAST,
+%       including all setting pre-defined by this function.
+%
+%   Author: Oliver J. Meacock, (c) 2021
 
 %Loop over timepoints
 for t = 1:size(pDorientation,1)
