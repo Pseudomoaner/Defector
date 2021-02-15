@@ -28,7 +28,7 @@ trackSettings.imgWidth = 147.0205; %Width of the images, in physcical units
 %%% END OF USER DEFINED VARIABLES %%%
 
 noFrames = endFrame - startFrame + 1;
-inDir = 'Channel_1';
+inDir = 'RawFrames';
 imgName = 'Frame_%04d.tif';
 outName = 'Defects.mat';
 plotSubDir = 'DefectOverlays';
