@@ -34,7 +34,7 @@ The settings for the analysis are defined in the `procSettings` structure. Three
 When run with these parameters, DefectFind will output a file called 'Defects.mat'. This contains the locations (`posDefCents`, `negDefCents`) and orientations (`posDefOris`, `negDefOris`) of all the defects in each frame.
 
 #### Visualising the output
-As well as finding and measuring defects, DefectorFind.m can be used to display the results as an overlay on top of your original images. To do this, set the `plotting` input to true, and provide a suitable output directory location as the `outImgDir` variable. Images such as that shown below will then be generated and automatically saved to the chosen directory as DefectFind proceeds.
+As well as finding and measuring defects, DefectorFind.m can be used to display the results as an overlay on top of your original images. To do this, set the `plotting` input to true, and provide a suitable output directory location as the `outImgDir` variable. Images such as that shown below will then be generated and automatically saved to the chosen directory as DefectorFind proceeds.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Pseudomoaner/Defector/master/Images/Overlay.jpg" alt="Defect Overlay"/>
@@ -60,7 +60,7 @@ Further details on the top three parameters can be found at the FAST wiki: https
 
 #### Tracking outputs
 
-The output of defect tracking, `procDefTracks`, will be appended to the 'Defects.mat' file generated during part 1. The format of this structure corresponds to the usual FAST track format: https://mackdurham.group.shef.ac.uk/FAST_DokuWiki/dokuwiki/doku.php?id=usage:tracking.
+The output of defect tracking, `procDefTracks`, will be appended to the 'Defects.mat' file generated during part 1. The format of this structure corresponds to the usual FAST track format: https://mackdurham.group.shef.ac.uk/FAST_DokuWiki/dokuwiki/doku.php?id=usage:tracking#outputs.
 
 Two fields of `procDefTracks` are defined which differ from the usual set of fields:
 
@@ -70,7 +70,6 @@ Two fields of `procDefTracks` are defined which differ from the usual set of fie
 ## References
 - Püspöki Z., Storath M., Sage D., Unser M. (2016). Transforms and Operators for Directional Bioimage Analysis: A Survey. In: De Vos W., Munck S., Timmermans JP. (eds) Focus on Bio-Image Informatics. Advances in Anatomy, Embryology and Cell Biology, vol 219. Springer, Cham. https://doi.org/10.1007/978-3-319-28549-8_3
 - Mermin, N. D. (1979). The topological theory of defects in ordered media. Review of Modern Physics 51, 591–648. https://doi.org/10.1103/RevModPhys.51.591
-- Huterer, D. and Vachaspati, T. (2005). Distribution of singularities in the cosmic microwave background polarization. Physical Review D 72(4), https://doi.org/043004.10.1103/PhysRevD.72.043004
 - Meacock, O.J., Doostmohammadi, A., Foster, K.R. et al (2020). Bacteria solve the problem of crowding by moving slowly. Nat. Phys. https://doi.org/10.1038/s41567-020-01070-6
 
 ## Contributors
