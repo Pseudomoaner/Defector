@@ -34,6 +34,9 @@ negDefOris = cell(size(imgList,1),1);
 
 if plotting
     figH = figure('Units','normalized','Position',[0.1,0.1,0.8,0.8]);
+    axH = gca;
+else
+    axH = [];
 end
 
 for i = 1:size(imgList,1)
@@ -44,17 +47,18 @@ for i = 1:size(imgList,1)
     oriY = -sin(oriDat);
     
     if plotting
-        cla
-        imagesc(imgDat)
+        cla(axH)
+        imagesc(axH,imgDat)
         colormap('gray')
-        axis equal
-        axis tight
+        axis(axH,'equal')
+        axis(axH,'tight')
         hold on
     end
     
-    [posDefCents{i},negDefCents{i},posDefOris{i},negDefOris{i}] = analyseDefects(oriX,oriY,procSettings.tensorSize/procSettings.pixSize,plotting);
+    [posDefCents{i},negDefCents{i},posDefOris{i},negDefOris{i}] = analyseDefects(oriX,oriY,procSettings.tensorSize/procSettings.pixSize,plotting,axH);
     
     if plotting
+        figure(figH)
         export_fig(fullfile(outImgDir,sprintf('Frame_%04d.tif',i)),'-nocrop')
     end
     

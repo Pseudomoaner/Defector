@@ -13,7 +13,7 @@ procSettings.minimumDist = 0; %Minimum radius for defects not to be considered a
 procSettings.tensorSize = 1.6; %Spatial scale of the Gaussian filter used to define the orientation tensor.
 procSettings.pixSize = 0.0718; %The size of an individual pixel (on its side) in physical units
 
-plotting = false; %Whether you wish to export overlays of defects on your original grayscale images.
+plotting = true; %Whether you wish to export overlays of defects on your original grayscale images.
 plotSubDir = 'defOverlays'; %Name of the subdirectory (inside Root) you want to save the overlay images inside of
 
 %Defect tracking parameters

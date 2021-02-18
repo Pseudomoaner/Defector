@@ -1,4 +1,4 @@
-function [pD,nD,pDorients,nDorients] = analyseDefects(dx,dy,minimumDist,plotting)
+function [pD,nD,pDorients,nDorients] = analyseDefects(dx,dy,minimumDist,plotting,axH)
 %ANALYSEDEFECTS finds the locations and orientations of half-integer
 %defects in the given director field.
 %
@@ -11,6 +11,8 @@ function [pD,nD,pDorients,nDorients] = analyseDefects(dx,dy,minimumDist,plotting
 %       annihilated.
 %       -plotting: Whether or not to generate an overlay of the detected
 %       defects.
+%       -axH: Handle to axes into which you want to plot. Can be left empty
+%       if plotting is set to false.
 %
 %   OUTPUTS:
 %       -pD: The locations of the detected +1/2 defect cores (nx2 matrix)
@@ -48,26 +50,26 @@ wn=calcs(dx,dy,possSpots);
 if plotting
     for i = 1:size(nD,1)
         if ~isnan(nDorients(i))
-            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)+60)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)+60)*defectScale)],'Color',[0,0,0],'LineWidth',defectScale/defectThickness);
-            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)+60)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)+60)*defectScale)],'Color',[0,1,1],'LineWidth',defectScale/(defectThickness*2));
-            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)+180)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)+180)*defectScale)],'Color',[0,0,0],'LineWidth',defectScale/defectThickness);
-            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)+180)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)+180)*defectScale)],'Color',[0,1,1],'LineWidth',defectScale/(defectThickness*2));
-            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)-60)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)-60)*defectScale)],'Color',[0,0,0],'LineWidth',defectScale/defectThickness);
-            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)-60)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)-60)*defectScale)],'Color',[0,1,1],'LineWidth',defectScale/(defectThickness*2));
+            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)+60)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)+60)*defectScale)],'Color',[0,0,0],'LineWidth',defectScale/defectThickness,'Parent',axH);
+            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)+60)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)+60)*defectScale)],'Color',[0,1,1],'LineWidth',defectScale/(defectThickness*2),'Parent',axH);
+            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)+180)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)+180)*defectScale)],'Color',[0,0,0],'LineWidth',defectScale/defectThickness,'Parent',axH);
+            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)+180)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)+180)*defectScale)],'Color',[0,1,1],'LineWidth',defectScale/(defectThickness*2),'Parent',axH);
+            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)-60)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)-60)*defectScale)],'Color',[0,0,0],'LineWidth',defectScale/defectThickness,'Parent',axH);
+            line([nD(i,2),nD(i,2)+(cosd(nDorients(i)-60)*defectScale)],[nD(i,1),nD(i,1)+(sind(nDorients(i)-60)*defectScale)],'Color',[0,1,1],'LineWidth',defectScale/(defectThickness*2),'Parent',axH);
             
-            plotTriangle(nD(i,2),nD(i,1),nDorients(i) + 60,defectScale/2,[0,0,0]);
-            plotTriangle(nD(i,2),nD(i,1),nDorients(i) + 60,defectScale/3,[0,0,1]);
+            plotTriangle(nD(i,2),nD(i,1),nDorients(i) + 60,defectScale/2,[0,0,0],axH);
+            plotTriangle(nD(i,2),nD(i,1),nDorients(i) + 60,defectScale/3,[0,0,1],axH);
         else
-            plotTriangle(nD(i,2),nD(i,1),60,defectScale/2,[0,0,0]);
-            plotTriangle(nD(i,2),nD(i,1),60,defectScale/3,[0,0,1]);
+            plotTriangle(nD(i,2),nD(i,1),60,defectScale/2,[0,0,0],axH);
+            plotTriangle(nD(i,2),nD(i,1),60,defectScale/3,[0,0,1],axH);
         end
     end
     
     for i = 1:size(pD,1)
-        plot(pD(i,2),pD(i,1),'ko','MarkerSize',defectScale,'MarkerFaceColor','k');
-        plot(pD(i,2),pD(i,1),'ro','MarkerSize',defectScale/1.5,'MarkerFaceColor','r');
+        plot(axH,pD(i,2),pD(i,1),'ko','MarkerSize',defectScale,'MarkerFaceColor','k');
+        plot(axH,pD(i,2),pD(i,1),'ro','MarkerSize',defectScale/1.5,'MarkerFaceColor','r');
         if ~isnan(pDorients(i))
-            plotarrow(pD(i,2),pD(i,1),cosd(pDorients(i)),sind(pDorients(i)),[1,0.5,0],defectScale*2,defectScale/defectThickness,defectScale/(defectThickness*2));
+            plotarrow(pD(i,2),pD(i,1),cosd(pDorients(i)),sind(pDorients(i)),[1,0.5,0],defectScale*2,defectScale/defectThickness,defectScale/(defectThickness*2),axH);
         end
     end
 end

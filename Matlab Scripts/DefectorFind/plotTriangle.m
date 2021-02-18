@@ -1,4 +1,4 @@
-function [] = plotTriangle(x,y,theta,scale,colour)
+function [] = plotTriangle(x,y,theta,scale,colour,axH)
 %PLOTTRIANGLE plots an equilateral triangle of the given position, scale, 
 %colour and orientation on the current axes.
 %
@@ -10,6 +10,7 @@ function [] = plotTriangle(x,y,theta,scale,colour)
 %       =scale: how large the triangle should be (the distance between the
 %       centre and each corner)
 %       -colour: colour of triangle, as standard Matlab triple (1x3 vector)
+%       -axH: Handle to axes into which you want to plot.
 %
 %   Author: Oliver J. Meacock, (c) 2021
 
@@ -23,4 +24,4 @@ y3 = y + (sind(theta - 120) * scale);
 X = [x1;x2;x3];
 Y = [y1;y2;y3];
 
-patch(X,Y,colour);
+patch(X,Y,colour,'Parent',axH);

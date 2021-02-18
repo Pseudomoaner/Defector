@@ -1,4 +1,4 @@
-function plotarrow(x,y,u,v,color,scale,lineWidthK,lineWidthC)
+function plotarrow(x,y,u,v,color,scale,lineWidthK,lineWidthC,axH)
 %PLOTARROW plots a coloured arrow on a black background, of the specified
 %position, orientation and size.
 %
@@ -11,6 +11,7 @@ function plotarrow(x,y,u,v,color,scale,lineWidthK,lineWidthC)
 %       u,v.
 %       -lineWidthK,lineWidthC: Width of the lines used to specify the
 %       black background and coloured overlay arrows.
+%       -axH: Handle to axes into which you want to plot.
 
 alpha = 0.5; % Size of arrow head relative to the length of the vector
 beta = 0.5;  % Width of the base of the arrow head relative to the length
@@ -28,8 +29,8 @@ hu = [x+uSc-alpha*(uSc+beta*(vSc+eps));x+uSc; ...
 hv = [y+vSc-alpha*(vSc-beta*(uSc+eps));y+vSc; ...
     y+vSc-alpha*(vSc+beta*(uSc+eps));NaN];
 
-line(uuK(:),vvK(:),'Color',[0,0,0],'LineWidth',lineWidthK)
-line(hu(:),hv(:),'Color',[0,0,0],'LineWidth',lineWidthK)
+line(uuK(:),vvK(:),'Color',[0,0,0],'LineWidth',lineWidthK,'Parent',axH)
+line(hu(:),hv(:),'Color',[0,0,0],'LineWidth',lineWidthK,'Parent',axH)
 
-h1 = line(uuC(:),vvC(:),'Color',color,'LineWidth',lineWidthC);
-h2 = line(hu(:),hv(:),'Color',color,'LineWidth',lineWidthC);
+h1 = line(uuC(:),vvC(:),'Color',color,'LineWidth',lineWidthC,'Parent',axH);
+h2 = line(hu(:),hv(:),'Color',color,'LineWidth',lineWidthC,'Parent',axH);
