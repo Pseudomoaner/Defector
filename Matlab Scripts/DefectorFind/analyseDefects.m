@@ -31,7 +31,7 @@ dy4=dy;
 
 %%%START OF PLOTTING PARAMETERS %%%
 nMax = max(nx,ny);
-defectScale = nMax/150;
+defectScale = nMax/100;
 defectThickness = 2;
 %%%END OF PLOTTING PARAMETERS%%%
 

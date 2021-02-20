@@ -1,4 +1,4 @@
-function [procDefTracks,trackSettings] = DefectorTrack(pDposition,nDposition,pDorientation,nDorientation,tS)
+function [procDefTracks,trackSettings] = DefectorTrack(pDposition,nDposition,pDorientation,nDorientation,tS,plotting,imgList,outImgDir)
 %DEFECTORTRACK runs tracking on topological defect data using the FAST
 %tracking framework.
 %
@@ -18,6 +18,14 @@ function [procDefTracks,trackSettings] = DefectorTrack(pDposition,nDposition,pDo
 %       included, in timesteps), pixSize (the physical size of a single
 %       pixel) and imgHeight/imgWidth (the dimensions of the original
 %       image, in physical units).
+%       -plotting: Whether or not you want the output to be plotted on top
+%       of the original images. Logical.
+%       -imgList: Cell array containing strings defining paths to images
+%       you wish to analyse. Output data will be in a set of cell arrays of
+%       equal dimensions, one set of defects per image. Can be set to [] if
+%       plotting is set to false.
+%       -outImgDir: Location you want output overlays to be saved to. Set
+%       to [] if plotting is set to false.
 %
 %   OUTPUTS:
 %       -procDefTracks: The defect track data structure, following the
@@ -109,3 +117,10 @@ for i = 1:size(procDefTracks,2)
 end
 
 progressbar(1)
+
+if plotting
+    figH = figure('Units','normalized','Position',[0.1,0.1,0.8,0.8],'visible','on');
+    for i = 1:size(pDposition,1)
+        drawTrackedDefectFrame(procDefTracks,tS,figH,imgList,outImgDir,i)
+    end
+end

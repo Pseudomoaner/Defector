@@ -33,14 +33,15 @@ posDefOris = cell(size(imgList,1),1);
 negDefOris = cell(size(imgList,1),1);
 
 if plotting
-    figH = figure('Units','normalized','Position',[0.1,0.1,0.8,0.8]);
+    figH = figure('Units','normalized','Position',[0.1,0.1,0.8,0.8],'visible','on');
     axH = gca;
 else
     axH = [];
 end
 
 for i = 1:size(imgList,1)
-    imgDat = imread(imgList{i});
+    imgDatAll = imread(imgList{i});
+    imgDat = mean(imgDatAll,3);
     oriDat = findImageOrients(imgDat,procSettings.tensorSize/procSettings.pixSize);
     
     oriX = cos(oriDat);
@@ -48,10 +49,13 @@ for i = 1:size(imgList,1)
     
     if plotting
         cla(axH)
-        imagesc(axH,imgDat)
+        imagesc(axH,imgDatAll)
         colormap('gray')
         axis(axH,'equal')
-        axis(axH,'tight')
+        axis(axH,[0-size(imgDat,2)/20,21*size(imgDat,2)/20,0-size(imgDat,1)/20,21*size(imgDat,1)/20])
+        
+        axH.XTick = [];
+        axH.YTick = [];
         hold on
     end
     
