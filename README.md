@@ -10,6 +10,8 @@ Defector is a suite of tools designed to allow localisation, analysis and visual
 
 An example analysis with Defector is provided in the DefectorExample.m script; the variable names throughout this document are copied from this example script.
 
+Note that plotting the output of Defector relies on the export_fig package. Download it here: https://uk.mathworks.com/matlabcentral/fileexchange/23629-export_fig.
+
 ## Usage
 
 ### Part 1: DefectorFind
