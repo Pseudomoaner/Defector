@@ -110,7 +110,8 @@ for i = 1:size(procDefTracks,2)
     elseif mean(procDefTracks(i).sparefeat1) == -1
         procDefTracks(i).population = 2;
         procDefTracks(i).phi = procDefTracks(i).phi*2/3;
-        procDefTracks(i).phi = procDefTracks(i).phi + (floor(rand(size(procDefTracks(i).phi))*3)-1)*120;
+%         procDefTracks(i).phi = procDefTracks(i).phi + (floor(rand(size(procDefTracks(i).phi))*3)-1)*120; %Randomise orientation in 120 degree increments at every timepoint
+        procDefTracks(i).phi = wrapTo180(rad2deg(unwrap(deg2rad(procDefTracks(i).phi*3)))/3 + floor((rand(1)*3)-1)*120); %Randomise orientation in 120 degree increments at a single timepoint and then keep orientation fixed
     else %If topological charge of tracked defect is mixed, mark as the anonymous population 3.
         procDefTracks(i).population = 3;
     end
