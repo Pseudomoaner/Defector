@@ -59,7 +59,7 @@ for i = 1:size(imgList,1)
         hold on
     end
     
-    [posDefCents{i},negDefCents{i},posDefOris{i},negDefOris{i}] = analyseDefects(oriX,oriY,procSettings.tensorSize/procSettings.pixSize,plotting,axH);
+    [posDefCents{i},negDefCents{i},posDefOris{i},negDefOris{i}] = analyseDefects(oriX,oriY,procSettings.minimumDist/procSettings.pixSize,plotting,axH);
     
     if plotting
         figure(figH)
