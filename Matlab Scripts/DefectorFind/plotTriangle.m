@@ -7,7 +7,7 @@ function [] = plotTriangle(x,y,theta,scale,colour,axH)
 %       -y: y-coordinate of triangle centre
 %       -theta: orientation of triangle (value of 0 indicates one vertex is
 %       poiting directly left)
-%       =scale: how large the triangle should be (the distance between the
+%       -scale: how large the triangle should be (the distance between the
 %       centre and each corner)
 %       -colour: colour of triangle, as standard Matlab triple (1x3 vector)
 %       -axH: Handle to axes into which you want to plot.
